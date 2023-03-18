@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx src/index.ts",
+    "generate": "drizzle-kit generate:sqlite --schema=src/schema.ts"
   },
   "keywords": [],
   "author": "",

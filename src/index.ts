@@ -2,7 +2,6 @@ import Database from "better-sqlite3";
 import { Kysely, SqliteDialect, sql } from "kysely";
 import { Kyselify } from "drizzle-orm/kysely";
 import {
-  Customer,
   customers,
   details,
   employees,
@@ -43,6 +42,8 @@ const db = new Kysely<Database>({
 
 const main = async () => {
   await db.selectFrom("customer").selectAll().execute();
+
+  const result2 = drzldb.select().from(customers).all()
 
   for (const id of customerIds) {
     await db
