@@ -1,0 +1,22 @@
+{
+  "name": "drizzle-knex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^8.2.0",
+    "drizzle-orm": "0.22.0-cfe1679",
+    "kysely": "^0.23.5"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.3",
+    "drizzle-kit": "^0.17.0",
+    "tsx": "^3.12.5"
+  }
+}
