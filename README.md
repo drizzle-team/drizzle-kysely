@@ -2,7 +2,7 @@
 
 This repo is a [better-sqlite3](https://www.npmjs.com/package/better-sqlite3) Northwind example of how you can use [Kysely](https://github.com/koskimas/kysely) with [Drizzle ORM](driz.li/orm) and benefit from both.  
  
-At [Drizzle Team](https://drizzle.team) we're aiming change the world of SQL in TypeScript for the better, not build the only "ORM you need".  
+At [Drizzle Team](https://drizzle.team) we're aiming change the world of SQL in TypeScript for the better, not build "the only ORM you need".  
 
 We've built module for you to declare Drizzle schema, use drizzle-kit for migrations and have your beloved Kysely as a query builder 🚀  
 
