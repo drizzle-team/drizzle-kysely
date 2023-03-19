@@ -16,6 +16,7 @@ import {
   customerIds,
   customerSearches,
   employeeIds,
+  orderIds,
   productIds,
   productSearches,
   supplierIds,
@@ -43,7 +44,7 @@ const db = new Kysely<Database>({
 const main = async () => {
   await db.selectFrom("customer").selectAll().execute();
 
-  const result2 = drzldb.select().from(customers).all()
+  const result2 = drzldb.select().from(customers).all();
 
   for (const id of customerIds) {
     await db
@@ -156,6 +157,54 @@ const main = async () => {
     .groupBy("order.id")
     .orderBy("order.id", "asc")
     .execute();
+
+  for (const id of orderIds) {
+    await db
+      .selectFrom("order_detail")
+      .selectAll()
+      .where("order_id", "=", id)
+      .leftJoin(
+        db
+          .selectFrom("order")
+          .select([
+            "order.id as o_id",
+            "order_date",
+            "required_date",
+            "shipped_date",
+            "ship_via",
+            "freight",
+            "ship_name",
+            "ship_city",
+            "ship_region",
+            "ship_postal_code",
+            "ship_country",
+            "customer_id",
+            "employee_id",
+          ])
+          .as("o"),
+        "o.o_id",
+        "order_detail.order_id"
+      )
+      .leftJoin(
+        db
+          .selectFrom("product")
+          .select([
+            "product.id as p_id",
+            "name",
+            "quantity_per_unit",
+            "product.unit_price as p_unit_price",
+            "units_in_stock",
+            "units_on_order",
+            "reorder_level",
+            "discontinued",
+            "supplier_id",
+          ])
+          .as("p"),
+        "p.p_id",
+        "order_detail.product_id"
+      )
+      .execute();
+  }
 };
 
 main();
